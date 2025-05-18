@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+            place-items: center;
+        }
+        #container{
+            display: flex;
+            flex-wrap: wrap;
+            margin: 10px;
+        }
+        .card{
+            width: 100px;
+            height: 150px;
+            background-color: purple;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.416);
+            margin: 10px;
+            font-size: 45px;
+            text-align: center;
+        }
+        .card:hover{
+            box-shadow: 2px 2px 5px rgba(255, 255, 255, 0.653);
+            transition: ease-in 0.2s;
+        }
+        #result{
+            font-size: 45px;
+            text-align: center;
+        }
+        #timer{
+            color: white;
+        }
+        button{
+            padding: 5px 20px;
+            font-size: 15px;
+        }
+
+
+        .clicked{
+            border: 2px solid white;
+        }
+        .disabled{
+            pointer-events: none;
+            background-color: rgba(128, 0, 128, 0.737);
+            border: none;
+            padding: 2px;
+        }
+        .hide{
+            display: none;
+        }
+
+        
+        
+    </style>
+</head>
+<body>
+    <h1 style="color: white;">MEMORY GAME</h1>
+    <div id="timer">
+        <!-- <h1>02:00</h1> -->
+    </div>
+    <button id="start">Start</button>
+    <button id="restart" class="hide">Restart</button>
+    <div id="container">
+        <!-- <div class="card">
+            <p>text</p>
+        </div> -->
+    </div>
+    <div id="result"></div>
+
+
+    <script src="index.js"></script>
+</body>
+</html>
