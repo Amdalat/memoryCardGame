@@ -7,7 +7,7 @@ console.log(doubledvals);
 let remainingcards = [];
 let selected = [];
 let count = 0;
-let duration = 60;
+let duration = 30;
 let interval;
 
 const containerdiv = document.getElementById('container');
@@ -123,8 +123,7 @@ function randomfunc() {
 }
 
 function timer() {
-    let min = Math.floor(duration / 60);
-    let sec = duration % 60;
+    let min, sec;    
 
     if (duration <= 0) {
         clearInterval(interval);
@@ -133,11 +132,19 @@ function timer() {
             item.classList.add('disabled');
             startbtn.disabled = true;
         })
-        resultdiv.innerHTML += `YOU LOST`;
+
+        // debugger
+        if (!resultdiv.innerHTML.includes('YOU LOST')) {
+            resultdiv.innerHTML += `YOU LOST`;
+        }
+
+        min = 0;
+        sec = 0;
     } else{
+        min = Math.floor(duration / 60);
+        sec = duration % 60;
         duration--;
     }
-
 
     (min < 10) ? min = '0'+ min : null;
     (sec < 10) ? sec = '0'+ sec : null;
@@ -148,6 +155,7 @@ function timer() {
 }
 
 function countdown() {
+    clearInterval(interval); 
     interval = setInterval(timer, 1000);
 }
 
@@ -169,7 +177,7 @@ startbtn.addEventListener('click', ()=>{
 
 restartbtn.addEventListener('click', ()=>{
     clearInterval(interval);
-    duration = 60;
+    duration = 30;
 
     carddivs = [];
     doubledvals = randomfunc();
@@ -178,6 +186,8 @@ restartbtn.addEventListener('click', ()=>{
     count = 0;
     resultdiv.innerHTML = '';
     containerdiv.innerHTML = '';
+    timerdiv.innerHTML = ``;
+
     startbtn.innerText = 'Pause';
     startbtn.disabled = false;
 
